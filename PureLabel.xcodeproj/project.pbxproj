@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6809351D6A6EF0B4F557B84A /* Pods_PureLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5BC6FF846267C73F9E6381 /* Pods_PureLabel.framework */; };
+		76AD5D551748641D89945836 /* Pods_PureLabel_PureLabelUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19269CA9CDFA49D7C315EBE0 /* Pods_PureLabel_PureLabelUITests.framework */; };
+		9684293BA91814AC88C39B30 /* Pods_PureLabelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6367D48809821F484A157599 /* Pods_PureLabelTests.framework */; };
 		ACE77F772C414DFD001B5A0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE77F762C414DFD001B5A0F /* AppDelegate.swift */; };
 		ACE77F792C414DFD001B5A0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE77F782C414DFD001B5A0F /* SceneDelegate.swift */; };
 		ACE77F7B2C414DFD001B5A0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE77F7A2C414DFD001B5A0F /* ViewController.swift */; };
@@ -36,6 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19269CA9CDFA49D7C315EBE0 /* Pods_PureLabel_PureLabelUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PureLabel_PureLabelUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6367D48809821F484A157599 /* Pods_PureLabelTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PureLabelTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		717B7367F4CDF77608B7BF32 /* Pods-PureLabel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PureLabel.debug.xcconfig"; path = "Target Support Files/Pods-PureLabel/Pods-PureLabel.debug.xcconfig"; sourceTree = "<group>"; };
+		74F83822E133FB8EFF5A4741 /* Pods-PureLabel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PureLabel.release.xcconfig"; path = "Target Support Files/Pods-PureLabel/Pods-PureLabel.release.xcconfig"; sourceTree = "<group>"; };
+		7874F8D11FF030A533870CE7 /* Pods-PureLabel-PureLabelUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PureLabel-PureLabelUITests.release.xcconfig"; path = "Target Support Files/Pods-PureLabel-PureLabelUITests/Pods-PureLabel-PureLabelUITests.release.xcconfig"; sourceTree = "<group>"; };
+		878B896054E706460985D9A7 /* Pods-PureLabelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PureLabelTests.debug.xcconfig"; path = "Target Support Files/Pods-PureLabelTests/Pods-PureLabelTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8E5BC6FF846267C73F9E6381 /* Pods_PureLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PureLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACE77F732C414DFD001B5A0F /* PureLabel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PureLabel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACE77F762C414DFD001B5A0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACE77F782C414DFD001B5A0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +59,8 @@
 		ACE77F932C414DFF001B5A0F /* PureLabelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PureLabelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACE77F972C414DFF001B5A0F /* PureLabelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PureLabelUITests.swift; sourceTree = "<group>"; };
 		ACE77F992C414DFF001B5A0F /* PureLabelUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PureLabelUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C87BEA105E4747614C186812 /* Pods-PureLabelTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PureLabelTests.release.xcconfig"; path = "Target Support Files/Pods-PureLabelTests/Pods-PureLabelTests.release.xcconfig"; sourceTree = "<group>"; };
+		F538530FAFECD221DED7F7D8 /* Pods-PureLabel-PureLabelUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PureLabel-PureLabelUITests.debug.xcconfig"; path = "Target Support Files/Pods-PureLabel-PureLabelUITests/Pods-PureLabel-PureLabelUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6809351D6A6EF0B4F557B84A /* Pods_PureLabel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9684293BA91814AC88C39B30 /* Pods_PureLabelTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +84,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76AD5D551748641D89945836 /* Pods_PureLabel_PureLabelUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F21875CE56CF45A9335A674 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				717B7367F4CDF77608B7BF32 /* Pods-PureLabel.debug.xcconfig */,
+				74F83822E133FB8EFF5A4741 /* Pods-PureLabel.release.xcconfig */,
+				F538530FAFECD221DED7F7D8 /* Pods-PureLabel-PureLabelUITests.debug.xcconfig */,
+				7874F8D11FF030A533870CE7 /* Pods-PureLabel-PureLabelUITests.release.xcconfig */,
+				878B896054E706460985D9A7 /* Pods-PureLabelTests.debug.xcconfig */,
+				C87BEA105E4747614C186812 /* Pods-PureLabelTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		695BA37A41701D31DEF0D0EA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E5BC6FF846267C73F9E6381 /* Pods_PureLabel.framework */,
+				19269CA9CDFA49D7C315EBE0 /* Pods_PureLabel_PureLabelUITests.framework */,
+				6367D48809821F484A157599 /* Pods_PureLabelTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		ACE77F6A2C414DFD001B5A0F = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +121,8 @@
 				ACE77F8C2C414DFF001B5A0F /* PureLabelTests */,
 				ACE77F962C414DFF001B5A0F /* PureLabelUITests */,
 				ACE77F742C414DFD001B5A0F /* Products */,
+				4F21875CE56CF45A9335A674 /* Pods */,
+				695BA37A41701D31DEF0D0EA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,9 +174,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ACE77F9D2C414DFF001B5A0F /* Build configuration list for PBXNativeTarget "PureLabel" */;
 			buildPhases = (
+				68B441BD8CEA92DE47C70ECE /* [CP] Check Pods Manifest.lock */,
 				ACE77F6F2C414DFD001B5A0F /* Sources */,
 				ACE77F702C414DFD001B5A0F /* Frameworks */,
 				ACE77F712C414DFD001B5A0F /* Resources */,
+				EFEC161375E0EFC4293B4BA2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,6 +193,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ACE77FA02C414DFF001B5A0F /* Build configuration list for PBXNativeTarget "PureLabelTests" */;
 			buildPhases = (
+				C4632CFBB98B0C854F121FFC /* [CP] Check Pods Manifest.lock */,
 				ACE77F852C414DFF001B5A0F /* Sources */,
 				ACE77F862C414DFF001B5A0F /* Frameworks */,
 				ACE77F872C414DFF001B5A0F /* Resources */,
@@ -169,9 +212,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ACE77FA32C414DFF001B5A0F /* Build configuration list for PBXNativeTarget "PureLabelUITests" */;
 			buildPhases = (
+				2B74498D2A1E04F35ECAA602 /* [CP] Check Pods Manifest.lock */,
 				ACE77F8F2C414DFF001B5A0F /* Sources */,
 				ACE77F902C414DFF001B5A0F /* Frameworks */,
 				ACE77F912C414DFF001B5A0F /* Resources */,
+				620448013F554B5C764D554A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -252,6 +297,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2B74498D2A1E04F35ECAA602 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PureLabel-PureLabelUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		620448013F554B5C764D554A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PureLabel-PureLabelUITests/Pods-PureLabel-PureLabelUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PureLabel-PureLabelUITests/Pods-PureLabel-PureLabelUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PureLabel-PureLabelUITests/Pods-PureLabel-PureLabelUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		68B441BD8CEA92DE47C70ECE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PureLabel-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C4632CFBB98B0C854F121FFC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PureLabelTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EFEC161375E0EFC4293B4BA2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PureLabel/Pods-PureLabel-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PureLabel/Pods-PureLabel-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PureLabel/Pods-PureLabel-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		ACE77F6F2C414DFD001B5A0F /* Sources */ = {
@@ -437,12 +585,14 @@
 		};
 		ACE77F9E2C414DFF001B5A0F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 717B7367F4CDF77608B7BF32 /* Pods-PureLabel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9Z3AMNZ66F;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PureLabel/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -465,12 +615,14 @@
 		};
 		ACE77F9F2C414DFF001B5A0F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74F83822E133FB8EFF5A4741 /* Pods-PureLabel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9Z3AMNZ66F;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PureLabel/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -493,6 +645,7 @@
 		};
 		ACE77FA12C414DFF001B5A0F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 878B896054E706460985D9A7 /* Pods-PureLabelTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -513,6 +666,7 @@
 		};
 		ACE77FA22C414DFF001B5A0F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C87BEA105E4747614C186812 /* Pods-PureLabelTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -533,6 +687,7 @@
 		};
 		ACE77FA42C414DFF001B5A0F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F538530FAFECD221DED7F7D8 /* Pods-PureLabel-PureLabelUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -551,6 +706,7 @@
 		};
 		ACE77FA52C414DFF001B5A0F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7874F8D11FF030A533870CE7 /* Pods-PureLabel-PureLabelUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
