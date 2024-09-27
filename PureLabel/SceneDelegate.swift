@@ -23,6 +23,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.rootViewController = self.navigationController
         self.navigationController?.navigationBar.isHidden = true
         self.window?.makeKeyAndVisible()
+        
+        // 특정 시간(예: 2초 후) 이후에 런치 스크린을 숨기고 메인 화면으로 전환합니다.
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+            self.navigationController?.pushViewController(LoginViewController(), animated: false)
+//            UserDefaults.standard.removeObject(forKey: "sessionID")
+//            
+//            if UserDefaults.standard.string(forKey: "sessionID") != nil {
+//                self.navigationController?.pushViewController(TabBarController(), animated: false)
+//            }else{
+//                self.navigationController?.pushViewController(LoginViewController(), animated: false)
+//            }
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

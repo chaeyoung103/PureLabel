@@ -10,6 +10,13 @@
 		6809351D6A6EF0B4F557B84A /* Pods_PureLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E5BC6FF846267C73F9E6381 /* Pods_PureLabel.framework */; };
 		76AD5D551748641D89945836 /* Pods_PureLabel_PureLabelUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19269CA9CDFA49D7C315EBE0 /* Pods_PureLabel_PureLabelUITests.framework */; };
 		9684293BA91814AC88C39B30 /* Pods_PureLabelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6367D48809821F484A157599 /* Pods_PureLabelTests.framework */; };
+		AC1A83D42CA3D3CA00D6710D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A83D32CA3D3CA00D6710D /* LoginViewController.swift */; };
+		AC1A83D72CA3D51300D6710D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A83D62CA3D51300D6710D /* UIColor.swift */; };
+		AC1A83D92CA6EC7B00D6710D /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A83D82CA6EC7B00D6710D /* SignupViewController.swift */; };
+		AC1A83DB2CA6F45500D6710D /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A83DA2CA6F45500D6710D /* NavigationBar.swift */; };
+		AC1A83DD2CA7092500D6710D /* SignupViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A83DC2CA7092500D6710D /* SignupViewController2.swift */; };
+		AC1A83DF2CA71F6E00D6710D /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A83DE2CA71F6E00D6710D /* ApiClient.swift */; };
+		AC1A83E12CA71FCB00D6710D /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A83E02CA71FCB00D6710D /* ApiModel.swift */; };
 		ACE77F772C414DFD001B5A0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE77F762C414DFD001B5A0F /* AppDelegate.swift */; };
 		ACE77F792C414DFD001B5A0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE77F782C414DFD001B5A0F /* SceneDelegate.swift */; };
 		ACE77F7B2C414DFD001B5A0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE77F7A2C414DFD001B5A0F /* ViewController.swift */; };
@@ -46,6 +53,13 @@
 		7874F8D11FF030A533870CE7 /* Pods-PureLabel-PureLabelUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PureLabel-PureLabelUITests.release.xcconfig"; path = "Target Support Files/Pods-PureLabel-PureLabelUITests/Pods-PureLabel-PureLabelUITests.release.xcconfig"; sourceTree = "<group>"; };
 		878B896054E706460985D9A7 /* Pods-PureLabelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PureLabelTests.debug.xcconfig"; path = "Target Support Files/Pods-PureLabelTests/Pods-PureLabelTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8E5BC6FF846267C73F9E6381 /* Pods_PureLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PureLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC1A83D32CA3D3CA00D6710D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		AC1A83D62CA3D51300D6710D /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		AC1A83D82CA6EC7B00D6710D /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		AC1A83DA2CA6F45500D6710D /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		AC1A83DC2CA7092500D6710D /* SignupViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController2.swift; sourceTree = "<group>"; };
+		AC1A83DE2CA71F6E00D6710D /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		AC1A83E02CA71FCB00D6710D /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
 		ACE77F732C414DFD001B5A0F /* PureLabel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PureLabel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACE77F762C414DFD001B5A0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACE77F782C414DFD001B5A0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +128,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AC1A83D52CA3D4FB00D6710D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AC1A83D62CA3D51300D6710D /* UIColor.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		ACE77F6A2C414DFD001B5A0F = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +161,7 @@
 		ACE77F752C414DFD001B5A0F /* PureLabel */ = {
 			isa = PBXGroup;
 			children = (
+				AC1A83D52CA3D4FB00D6710D /* Extension */,
 				ACE77F762C414DFD001B5A0F /* AppDelegate.swift */,
 				ACE77F782C414DFD001B5A0F /* SceneDelegate.swift */,
 				ACE77F7A2C414DFD001B5A0F /* ViewController.swift */,
@@ -146,6 +169,12 @@
 				ACE77F7F2C414DFF001B5A0F /* Assets.xcassets */,
 				ACE77F812C414DFF001B5A0F /* LaunchScreen.storyboard */,
 				ACE77F842C414DFF001B5A0F /* Info.plist */,
+				AC1A83D32CA3D3CA00D6710D /* LoginViewController.swift */,
+				AC1A83D82CA6EC7B00D6710D /* SignupViewController.swift */,
+				AC1A83DA2CA6F45500D6710D /* NavigationBar.swift */,
+				AC1A83DC2CA7092500D6710D /* SignupViewController2.swift */,
+				AC1A83DE2CA71F6E00D6710D /* ApiClient.swift */,
+				AC1A83E02CA71FCB00D6710D /* ApiModel.swift */,
 			);
 			path = PureLabel;
 			sourceTree = "<group>";
@@ -406,9 +435,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC1A83D92CA6EC7B00D6710D /* SignupViewController.swift in Sources */,
+				AC1A83D42CA3D3CA00D6710D /* LoginViewController.swift in Sources */,
+				AC1A83DF2CA71F6E00D6710D /* ApiClient.swift in Sources */,
 				ACE77F7B2C414DFD001B5A0F /* ViewController.swift in Sources */,
+				AC1A83E12CA71FCB00D6710D /* ApiModel.swift in Sources */,
 				ACE77F772C414DFD001B5A0F /* AppDelegate.swift in Sources */,
+				AC1A83DB2CA6F45500D6710D /* NavigationBar.swift in Sources */,
+				AC1A83DD2CA7092500D6710D /* SignupViewController2.swift in Sources */,
 				ACE77F792C414DFD001B5A0F /* SceneDelegate.swift in Sources */,
+				AC1A83D72CA3D51300D6710D /* UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
