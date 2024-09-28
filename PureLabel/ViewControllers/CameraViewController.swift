@@ -16,6 +16,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     var captureSession: AVCaptureSession!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
     var photoOutput: AVCapturePhotoOutput!
+    var currentCameraPosition: AVCaptureDevice.Position = .back
     
     let navigationBar = UIView().then{
         $0.backgroundColor = .buttonBgColor
@@ -55,7 +56,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .textButtonColor // 배경색 설정
-
+        
         
         hierarchy()
         layout()
@@ -64,7 +65,8 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         setupCamera()
         
         self.backButton.addTarget(self, action: #selector(backButtonDidTab), for: .touchUpInside)
-        self.pictureButton.addTarget(self, action: #selector(backButtonDidTab), for: .touchUpInside)
+        self.pictureButton.addTarget(self, action: #selector(pictureButtonDidTab), for: .touchUpInside)
+        self.turnButton.addTarget(self, action: #selector(turnButtonDidTab), for: .touchUpInside)
         
         
     }
@@ -75,13 +77,45 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
     
     @objc func backButtonDidTab() {
-        self.navigationController?.popViewController(animated: true)
+        let homeVC = TabBarController()
+        self.navigationController?.pushViewController(homeVC, animated: true)
+    }
+    
+    @objc func turnButtonDidTab() {
+        // 현재 카메라 포지션을 전환
+        currentCameraPosition = currentCameraPosition == .back ? .front : .back
+        
+        // 세션을 멈춤
+        captureSession.stopRunning()
+        
+        // 기존 입력 제거
+        guard let currentInput = captureSession.inputs.first else { return }
+        captureSession.removeInput(currentInput)
+        
+        // 새로운 카메라 설정
+        let newCameraDevice = currentCameraPosition == .back
+        ? AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back)
+        : AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front)
+        
+        do {
+            // 새로운 입력 추가
+            let newInput = try AVCaptureDeviceInput(device: newCameraDevice!)
+            captureSession.addInput(newInput)
+        } catch {
+            print("카메라 전환 중 오류 발생: \(error)")
+            return
+        }
+        
+        // 세션 다시 시작
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.captureSession.startRunning()
+        }
     }
     
     @objc func pictureButtonDidTab() {
         // Capture a photo when the button is pressed
         let settings = AVCapturePhotoSettings()
-        settings.flashMode = .auto // Optional: Set flash mode
+        settings.flashMode = .auto
         settings.isAutoStillImageStabilizationEnabled = true
         photoOutput.capturePhoto(with: settings, delegate: self) // Capture photo
         
@@ -107,30 +141,37 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
             return
         }
         
-        // 4. 출력 설정 (화면에 카메라 프리뷰 표시)
+        // 4. 출력 설정 (사진 출력 추가)
+        photoOutput = AVCapturePhotoOutput()
+        guard captureSession.canAddOutput(photoOutput) else {
+            print("사진 출력 추가를 실패했습니다.")
+            return
+        }
+        captureSession.addOutput(photoOutput)
+        
+        // 5. 출력 설정 (화면에 카메라 프리뷰 표시)
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         videoPreviewLayer.videoGravity = .resizeAspectFill
         videoPreviewLayer.frame = view.frame
         self.cameraView.layer.addSublayer(videoPreviewLayer)
         
-        // 5. 카메라 세션 시작
+        // 6. 카메라 세션 시작
         DispatchQueue.global(qos: .userInitiated).async {
             self.captureSession.startRunning()
         }
     }
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-            guard let imageData = photo.fileDataRepresentation() else {
-                print("사진 데이터 생성에 실패했습니다.")
-                return
-            }
-            
-            // Create UIImage from photo data
-            let capturedImage = UIImage(data: imageData)
-            
-            // Handle the captured image (e.g., save to gallery, display preview, etc.)
-            print("사진이 성공적으로 찍혔습니다!")
+        guard let imageData = photo.fileDataRepresentation() else {
+            print("사진 데이터 생성에 실패했습니다.")
+            return
         }
+        // 사진 데이터를 UIImage로 변환
+        let capturedImage = UIImage(data: imageData)
+        
+        // Handle the captured image (e.g., save to gallery, display preview, etc.)
+        print("사진이 성공적으로 찍혔습니다!")
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

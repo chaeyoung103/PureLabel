@@ -14,19 +14,17 @@ class TagCell: UICollectionViewCell {
     static let cellIdentifier = "tagCell"
     
     override var isSelected: Bool{
-            didSet{
-                if isSelected{
-                    tagLabel.backgroundColor = UIColor.textDarkBrown
-                    tagLabel.textColor = UIColor.white
-                    
-                }
-                else{
-                    tagLabel.backgroundColor = UIColor.bgColor
-                    tagLabel.textColor = UIColor.textDarkBrown
-                    
-                }
+        didSet{
+            if isSelected{
+                tagLabel.backgroundColor = UIColor.textDarkBrown
+                tagLabel.textColor = UIColor.white
+            }
+            else{
+                tagLabel.backgroundColor = UIColor.bgColor
+                tagLabel.textColor = UIColor.textDarkBrown
             }
         }
+    }
     
     
     lazy var tagLabel = cellPaddingLabel().then{

@@ -13,6 +13,10 @@ import SnapKit
 
 class SignupViewController2: UIViewController {
     
+    var selectedGender = "여성"
+    var selectedSkinType = ""
+    var selectedWorries: [String] = []
+    
     let tagList = ["여드름","아토피","피지/블랙헤드","민감성","속건조","주름/탄력","모공","홍조","각질","다크서클","미백/잡티","해당없음"]
     //MARK: - UIComponents
     
@@ -153,10 +157,21 @@ class SignupViewController2: UIViewController {
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         $0.titleLabel?.textAlignment = .center
         $0.layer.cornerRadius = 8
+        $0.isEnabled = false
     }
     
     //MARK: - LifeCycles
     
+    var receivedData: Props
+    
+    init(data: Props) {
+        self.receivedData = data
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -170,12 +185,26 @@ class SignupViewController2: UIViewController {
             self?.navigationController?.popViewController(animated: true)
         }
         
+        updateSignUpButtonState()
+        
         let layout = LeftAlignedCollectionViewFlowLayout()
         layout.minimumLineSpacing = 12
         layout.minimumInteritemSpacing = 8
         self.skinWorriesCollectionView.collectionViewLayout = layout
         self.skinWorriesCollectionView.delegate = self
         self.skinWorriesCollectionView.dataSource = self
+        self.skinWorriesCollectionView.allowsMultipleSelection = true
+        
+        self.femaleBtn.addTarget(self, action: #selector(femaleBtnDidTab), for: .touchUpInside)
+        self.maleBtn.addTarget(self, action: #selector(maleBtnDidTab), for: .touchUpInside)
+        
+        self.skin1Btn.addTarget(self, action: #selector(skin1BtnDidTab), for: .touchUpInside)
+        self.skin2Btn.addTarget(self, action: #selector(skin2BtnDidTab), for: .touchUpInside)
+        self.skin3Btn.addTarget(self, action: #selector(skin3BtnDidTab), for: .touchUpInside)
+        self.skin4Btn.addTarget(self, action: #selector(skin4BtnDidTab), for: .touchUpInside)
+        self.skin5Btn.addTarget(self, action: #selector(skin5BtnDidTab), for: .touchUpInside)
+        
+        self.signUpBtn.addTarget(self, action: #selector(signUpBtnDidTab), for: .touchUpInside)
         
     }
     
@@ -186,42 +215,99 @@ class SignupViewController2: UIViewController {
         }
     }
     
-    @objc func signUpBtnDidTab() {
-        //
-        //        ApiClient().signUp(self,SignUpInput(name: name.text,email: email.text , password: password.text))
+    func showAlert(message:String) {
+        let alertController = UIAlertController(title: message, message: nil, preferredStyle: .alert)
         
-    }
-    
-    @objc func passwordCheckTextFieldDidChange() {
+        // "확인" 버튼 추가
+        let confirmAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+        alertController.addAction(confirmAction)
         
-        //        if password.text != passwordCheck.text {
-        //            notice.isHidden = false
-        //        }else{
-        //            notice.isHidden = true
-        //        }
-        updateLoginButtonState()
-        
-    }
-    
-    @objc func textFieldDidChange() {
-        updateLoginButtonState()
-        
+        // 알림창을 화면에 표시
+        self.present(alertController, animated: true, completion: nil)
     }
     
     // 완료 버튼의 활성화 상태를 업데이트하는 메서드
-    private func updateLoginButtonState() {
-        //        let isNameEmpty = name.text?.isEmpty ?? true
-        //        let isEmailEmpty = id.text?.isEmpty ?? true
-        //        let isPasswordEmpty = password.text?.isEmpty ?? true
-        //        let isPasswordCheckEmpty = passwordCheck.text?.isEmpty ?? true
-        //
-        //        signUpBtn.isEnabled = !isNameEmpty && !isEmailEmpty && !isPasswordEmpty && !isPasswordCheckEmpty
+    private func updateSignUpButtonState() {
+        let isSkinType = selectedSkinType.isEmpty
+        
+        signUpBtn.isEnabled = !isSkinType
         
         if signUpBtn.isEnabled {
             signUpBtn.backgroundColor = .buttonBgColor
         } else {
             signUpBtn.backgroundColor = .buttonBgColor_inactive
         }
+    }
+    
+    @objc func signUpBtnDidTab() {
+        let signupData = SignupInput(name:receivedData.name,id: receivedData.id,password: receivedData.password,gender: selectedGender,skinType: selectedSkinType,skinWorries: selectedWorries)
+        ApiClient().signup(self,signupData)
+        
+    }
+    
+    @objc func femaleBtnDidTab() {
+        femaleBtn.isSelected = true
+        maleBtn.isSelected = false
+        selectedGender = "여성"
+        updateSignUpButtonState()
+    }
+    
+    @objc func maleBtnDidTab() {
+        femaleBtn.isSelected = false
+        maleBtn.isSelected = true
+        selectedGender = "남성"
+        updateSignUpButtonState()
+    }
+    
+    @objc func skin1BtnDidTab() {
+        skin1Btn.isSelected = true
+        skin2Btn.isSelected = false
+        skin3Btn.isSelected = false
+        skin4Btn.isSelected = false
+        skin5Btn.isSelected = false
+        selectedSkinType = "복합성"
+        updateSignUpButtonState()
+    }
+    
+    @objc func skin2BtnDidTab() {
+        skin1Btn.isSelected = false
+        skin2Btn.isSelected = true
+        skin3Btn.isSelected = false
+        skin4Btn.isSelected = false
+        skin5Btn.isSelected = false
+        selectedSkinType = "지성"
+        updateSignUpButtonState()
+    }
+    
+    @objc func skin3BtnDidTab() {
+        skin1Btn.isSelected = false
+        skin2Btn.isSelected = false
+        skin3Btn.isSelected = true
+        skin4Btn.isSelected = false
+        skin5Btn.isSelected = false
+        selectedSkinType = "중성"
+        updateSignUpButtonState()
+    }
+    
+    @objc func skin4BtnDidTab() {
+        skin1Btn.isSelected = false
+        skin2Btn.isSelected = false
+        skin3Btn.isSelected = false
+        skin4Btn.isSelected = true
+        skin5Btn.isSelected = false
+        selectedSkinType = "건성"
+        updateSignUpButtonState()
+
+    }
+    
+    @objc func skin5BtnDidTab() {
+        skin1Btn.isSelected = false
+        skin2Btn.isSelected = false
+        skin3Btn.isSelected = false
+        skin4Btn.isSelected = false
+        skin5Btn.isSelected = true
+        selectedSkinType = "수부지"
+        updateSignUpButtonState()
     }
     
     func hierarchy(){
@@ -379,8 +465,8 @@ class SignupViewController2: UIViewController {
 //MARK: - CollectionViewDelegate
 extension SignupViewController2: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return tagList.count
     }
     
@@ -412,4 +498,63 @@ extension SignupViewController2: UICollectionViewDelegate, UICollectionViewDataS
         
         return size
     }
+    
+    
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedTag = tagList[indexPath.row]
+        
+        // "해당없음" 선택 시 다른 셀 선택 해제
+        if selectedTag == "해당없음" {
+            selectedWorries.removeAll()
+            for i in 0..<collectionView.numberOfItems(inSection: indexPath.section) {
+                let deselectIndexPath = IndexPath(row: i, section: indexPath.section)
+                collectionView.deselectItem(at: deselectIndexPath, animated: false)
+            }
+            selectedWorries.append("해당없음")
+            return
+        }
+        
+        // "해당없음" 해제
+        if let noneIndex = selectedWorries.firstIndex(of: "해당없음") {
+            selectedWorries.remove(at: noneIndex)
+            let noneIndexPath = IndexPath(row: 11, section: indexPath.section)
+            collectionView.deselectItem(at: noneIndexPath, animated: false)
+        }
+        
+        // 이미 선택된 항목은 해제 처리
+        if selectedWorries.contains(selectedTag) {
+            if let indexToRemove = selectedWorries.firstIndex(of: selectedTag) {
+                selectedWorries.remove(at: indexToRemove)
+            }
+        } else {
+            // 5개 초과 선택 방지
+            if selectedWorries.count >= 5 {
+                showAlert(message: "5개 이하로 선택해주세요")
+                collectionView.deselectItem(at: indexPath, animated: true)
+                return
+            }
+            selectedWorries.append(selectedTag)
+        }
+        updateSignUpButtonState()
+    }
+
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        let selectedTag = tagList[indexPath.row]
+        
+        // "해당없음" 선택 시 다른 셀 선택 해제 처리
+        if selectedTag == "해당없음" {
+            return true
+        }
+        
+        // 5개 초과 선택 방지
+        if selectedWorries.count >= 5 && !selectedWorries.contains(selectedTag) {
+            showAlert(message: "5개 이하로 선택해주세요")
+            return false
+        }
+        updateSignUpButtonState()
+        
+        return true
+    }
+
 }

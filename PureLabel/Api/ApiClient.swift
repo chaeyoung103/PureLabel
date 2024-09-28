@@ -16,7 +16,7 @@ struct APIResponse<T: Codable>: Codable {
 
 class ApiClient {
     func login(_ viewController : LoginViewController, _ parameter: LoginInput){
-        AF.request("http://192.168.156.69:9000/user/login", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, headers: nil).validate().responseDecodable(of: APIResponse<LoginModel>.self) { response in
+        AF.request("http://172.20.10.3:9000/user/login", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, headers: nil).validate().responseDecodable(of: APIResponse<LoginModel>.self) { response in
             print("로그인 ",response)
             switch response.result {
             case .success(let result):
@@ -37,8 +37,24 @@ class ApiClient {
                 
             case .failure(let error):
                 print("네트워크 오류: ", error.localizedDescription)
-                let homeVC = TabBarController()
-                viewController.navigationController?.pushViewController(homeVC, animated: true)
+            }
+        }
+    }
+    
+    func signup(_ viewController : SignupViewController2, _ parameter: SignupInput){
+        AF.request("http://172.20.10.3:9000/user/signUp", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, headers: nil).validate().responseDecodable(of: APIResponse<String>.self) { response in
+            switch response.result {
+            case .success(let result):
+                print("응답 데이터: ", result)
+                if result.code == 1000 {
+                    print("회원가입 성공", result.result ?? "")
+                    viewController.navigationController?.pushViewController(LoginViewController(), animated: false)
+                } else {
+                    print("회원가입 실패: ", result.message)
+                }
+                
+            case .failure(let error):
+                print("네트워크 오류: ", error.localizedDescription)
             }
         }
     }

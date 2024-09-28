@@ -14,3 +14,12 @@ struct LoginModel : Codable {
     var accessToken : String?
     var refreshToken : String?
 }
+
+struct SignupInput : Codable {
+    var name : String?
+    var id : String?
+    var password : String?
+    var gender : String?
+    var skinType : String?
+    var skinWorries : [String]?
+}
