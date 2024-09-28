@@ -31,7 +31,7 @@ extension UIColor {
     static let textGray = UIColor(hex:"#BEBEBE")
     static let errRed = UIColor(hex:"#D34B3B")
     static let buttonBgColor = UIColor(hex: "#4B4B4B")
-    static let buttonBgColor_inactive = UIColor(hex: "#4B4B4B")
+    static let buttonBgColor_inactive = UIColor(hex: "#D9D9D9")
     static let textButtonColor = UIColor(hex: "#999999")
     static let textBlack = UIColor(hex: "#201F21")
     static let textDarkBrown = UIColor(hex: "#525252")

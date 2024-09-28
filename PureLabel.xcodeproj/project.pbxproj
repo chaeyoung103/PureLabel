@@ -17,9 +17,15 @@
 		AC1A83DD2CA7092500D6710D /* SignupViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A83DC2CA7092500D6710D /* SignupViewController2.swift */; };
 		AC1A83DF2CA71F6E00D6710D /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A83DE2CA71F6E00D6710D /* ApiClient.swift */; };
 		AC1A83E12CA71FCB00D6710D /* ApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A83E02CA71FCB00D6710D /* ApiModel.swift */; };
+		AC1A83E92CA7D31D00D6710D /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A83E82CA7D31D00D6710D /* TagCell.swift */; };
+		AC1A83EB2CA7DBE400D6710D /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A83EA2CA7DBE300D6710D /* LeftAlignedCollectionViewFlowLayout.swift */; };
+		AC1A83ED2CA7DD9F00D6710D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A83EC2CA7DD9F00D6710D /* TabBarController.swift */; };
+		AC1A83EF2CA7DDCE00D6710D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A83EE2CA7DDCE00D6710D /* HomeViewController.swift */; };
+		AC1A83F22CA7DDF400D6710D /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A83F12CA7DDF400D6710D /* CameraViewController.swift */; };
+		AC1A83F42CA7DE0A00D6710D /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A83F32CA7DE0A00D6710D /* CommunityViewController.swift */; };
+		AC1A83F62CA7DE1600D6710D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A83F52CA7DE1600D6710D /* ProfileViewController.swift */; };
 		ACE77F772C414DFD001B5A0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE77F762C414DFD001B5A0F /* AppDelegate.swift */; };
 		ACE77F792C414DFD001B5A0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE77F782C414DFD001B5A0F /* SceneDelegate.swift */; };
-		ACE77F7B2C414DFD001B5A0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE77F7A2C414DFD001B5A0F /* ViewController.swift */; };
 		ACE77F7E2C414DFD001B5A0F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = ACE77F7D2C414DFD001B5A0F /* Base */; };
 		ACE77F802C414DFF001B5A0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACE77F7F2C414DFF001B5A0F /* Assets.xcassets */; };
 		ACE77F832C414DFF001B5A0F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = ACE77F822C414DFF001B5A0F /* Base */; };
@@ -60,10 +66,16 @@
 		AC1A83DC2CA7092500D6710D /* SignupViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController2.swift; sourceTree = "<group>"; };
 		AC1A83DE2CA71F6E00D6710D /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		AC1A83E02CA71FCB00D6710D /* ApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModel.swift; sourceTree = "<group>"; };
+		AC1A83E82CA7D31D00D6710D /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
+		AC1A83EA2CA7DBE300D6710D /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		AC1A83EC2CA7DD9F00D6710D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		AC1A83EE2CA7DDCE00D6710D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		AC1A83F12CA7DDF400D6710D /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		AC1A83F32CA7DE0A00D6710D /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
+		AC1A83F52CA7DE1600D6710D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		ACE77F732C414DFD001B5A0F /* PureLabel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PureLabel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACE77F762C414DFD001B5A0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACE77F782C414DFD001B5A0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ACE77F7A2C414DFD001B5A0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ACE77F7D2C414DFD001B5A0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ACE77F7F2C414DFF001B5A0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACE77F822C414DFF001B5A0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -132,8 +144,66 @@
 			isa = PBXGroup;
 			children = (
 				AC1A83D62CA3D51300D6710D /* UIColor.swift */,
+				AC1A83EA2CA7DBE300D6710D /* LeftAlignedCollectionViewFlowLayout.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		AC1A83E22CA7D25000D6710D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AC1A83E82CA7D31D00D6710D /* TagCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		AC1A83E32CA7D26C00D6710D /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				ACE77F782C414DFD001B5A0F /* SceneDelegate.swift */,
+				ACE77F762C414DFD001B5A0F /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		AC1A83E42CA7D28C00D6710D /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				AC1A83DC2CA7092500D6710D /* SignupViewController2.swift */,
+				AC1A83D82CA6EC7B00D6710D /* SignupViewController.swift */,
+				AC1A83D32CA3D3CA00D6710D /* LoginViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		AC1A83E52CA7D2A800D6710D /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				AC1A83E02CA71FCB00D6710D /* ApiModel.swift */,
+				AC1A83DE2CA71F6E00D6710D /* ApiClient.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		AC1A83E62CA7D2CD00D6710D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AC1A83E42CA7D28C00D6710D /* Auth */,
+				AC1A83EC2CA7DD9F00D6710D /* TabBarController.swift */,
+				AC1A83EE2CA7DDCE00D6710D /* HomeViewController.swift */,
+				AC1A83F12CA7DDF400D6710D /* CameraViewController.swift */,
+				AC1A83F32CA7DE0A00D6710D /* CommunityViewController.swift */,
+				AC1A83F52CA7DE1600D6710D /* ProfileViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AC1A83E72CA7D2D800D6710D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AC1A83DA2CA6F45500D6710D /* NavigationBar.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		ACE77F6A2C414DFD001B5A0F = {
@@ -161,20 +231,16 @@
 		ACE77F752C414DFD001B5A0F /* PureLabel */ = {
 			isa = PBXGroup;
 			children = (
+				AC1A83E72CA7D2D800D6710D /* Views */,
+				AC1A83E62CA7D2CD00D6710D /* ViewControllers */,
+				AC1A83E52CA7D2A800D6710D /* Api */,
+				AC1A83E32CA7D26C00D6710D /* Application */,
+				AC1A83E22CA7D25000D6710D /* Cell */,
 				AC1A83D52CA3D4FB00D6710D /* Extension */,
-				ACE77F762C414DFD001B5A0F /* AppDelegate.swift */,
-				ACE77F782C414DFD001B5A0F /* SceneDelegate.swift */,
-				ACE77F7A2C414DFD001B5A0F /* ViewController.swift */,
 				ACE77F7C2C414DFD001B5A0F /* Main.storyboard */,
 				ACE77F7F2C414DFF001B5A0F /* Assets.xcassets */,
 				ACE77F812C414DFF001B5A0F /* LaunchScreen.storyboard */,
 				ACE77F842C414DFF001B5A0F /* Info.plist */,
-				AC1A83D32CA3D3CA00D6710D /* LoginViewController.swift */,
-				AC1A83D82CA6EC7B00D6710D /* SignupViewController.swift */,
-				AC1A83DA2CA6F45500D6710D /* NavigationBar.swift */,
-				AC1A83DC2CA7092500D6710D /* SignupViewController2.swift */,
-				AC1A83DE2CA71F6E00D6710D /* ApiClient.swift */,
-				AC1A83E02CA71FCB00D6710D /* ApiModel.swift */,
 			);
 			path = PureLabel;
 			sourceTree = "<group>";
@@ -437,13 +503,19 @@
 			files = (
 				AC1A83D92CA6EC7B00D6710D /* SignupViewController.swift in Sources */,
 				AC1A83D42CA3D3CA00D6710D /* LoginViewController.swift in Sources */,
+				AC1A83E92CA7D31D00D6710D /* TagCell.swift in Sources */,
+				AC1A83EB2CA7DBE400D6710D /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				AC1A83DF2CA71F6E00D6710D /* ApiClient.swift in Sources */,
-				ACE77F7B2C414DFD001B5A0F /* ViewController.swift in Sources */,
 				AC1A83E12CA71FCB00D6710D /* ApiModel.swift in Sources */,
+				AC1A83F62CA7DE1600D6710D /* ProfileViewController.swift in Sources */,
 				ACE77F772C414DFD001B5A0F /* AppDelegate.swift in Sources */,
 				AC1A83DB2CA6F45500D6710D /* NavigationBar.swift in Sources */,
+				AC1A83F42CA7DE0A00D6710D /* CommunityViewController.swift in Sources */,
 				AC1A83DD2CA7092500D6710D /* SignupViewController2.swift in Sources */,
+				AC1A83ED2CA7DD9F00D6710D /* TabBarController.swift in Sources */,
 				ACE77F792C414DFD001B5A0F /* SceneDelegate.swift in Sources */,
+				AC1A83F22CA7DDF400D6710D /* CameraViewController.swift in Sources */,
+				AC1A83EF2CA7DDCE00D6710D /* HomeViewController.swift in Sources */,
 				AC1A83D72CA3D51300D6710D /* UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

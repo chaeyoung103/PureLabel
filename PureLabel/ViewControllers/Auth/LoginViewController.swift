@@ -63,6 +63,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         $0.textColor = UIColor.errRed
         $0.text = "아이디 또는 비밀번호가 일치하지 않습니다"
         $0.textAlignment = .center
+        $0.isHidden = true
     }
     
     let loginBtn = UIButton().then{
@@ -138,6 +139,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @objc func signUpBtnDidTab() {
         let signUpViewController = SignupViewController()
         self.navigationController?.pushViewController(signUpViewController, animated: true)
+    }
+    
+    func showErr(isErr: Bool) {
+        if (isErr){
+            errMessage.isHidden = false
+        }else {
+            errMessage.isHidden = true
+        }
     }
     
     //MARK: - Layout

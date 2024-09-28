@@ -12,6 +12,8 @@ import Then
 import SnapKit
 
 class SignupViewController2: UIViewController {
+    
+    let tagList = ["여드름","아토피","피지/블랙헤드","민감성","속건조","주름/탄력","모공","홍조","각질","다크서클","미백/잡티","해당없음"]
     //MARK: - UIComponents
     
     let navigationBar = NavigationBar()
@@ -30,7 +32,7 @@ class SignupViewController2: UIViewController {
     
     let femaleBtn = UIButton().then{
         $0.setImage(UIImage(named: "selected"), for: .selected)
-        $0.setImage(UIImage(named: "unselected"), for: .normal)
+        $0.setImage(UIImage(named: "deselected"), for: .normal)
         $0.isSelected = true
     }
     
@@ -42,7 +44,7 @@ class SignupViewController2: UIViewController {
     
     let maleBtn = UIButton().then{
         $0.setImage(UIImage(named: "selected"), for: .selected)
-        $0.setImage(UIImage(named: "unselected"), for: .normal)
+        $0.setImage(UIImage(named: "deselected"), for: .normal)
         $0.isSelected = false
     }
     
@@ -56,7 +58,7 @@ class SignupViewController2: UIViewController {
         $0.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         $0.textColor = .textBlack
         $0.text = "피부 타입*"
-
+        
     }
     
     let skinTypeDescription = UILabel().then{
@@ -67,7 +69,7 @@ class SignupViewController2: UIViewController {
     
     let skin1Btn = UIButton().then{
         $0.setImage(UIImage(named: "selected"), for: .selected)
-        $0.setImage(UIImage(named: "unselected"), for: .normal)
+        $0.setImage(UIImage(named: "deselected"), for: .normal)
         $0.isSelected = false
     }
     
@@ -80,7 +82,7 @@ class SignupViewController2: UIViewController {
     
     let skin2Btn = UIButton().then{
         $0.setImage(UIImage(named: "selected"), for: .selected)
-        $0.setImage(UIImage(named: "unselected"), for: .normal)
+        $0.setImage(UIImage(named: "deselected"), for: .normal)
         $0.isSelected = false
     }
     let skin2Label = UILabel().then{
@@ -91,7 +93,7 @@ class SignupViewController2: UIViewController {
     
     let skin3Btn = UIButton().then{
         $0.setImage(UIImage(named: "selected"), for: .selected)
-        $0.setImage(UIImage(named: "unselected"), for: .normal)
+        $0.setImage(UIImage(named: "deselected"), for: .normal)
         $0.isSelected = false
     }
     let skin3Label = UILabel().then{
@@ -102,7 +104,7 @@ class SignupViewController2: UIViewController {
     
     let skin4Btn = UIButton().then{
         $0.setImage(UIImage(named: "selected"), for: .selected)
-        $0.setImage(UIImage(named: "unselected"), for: .normal)
+        $0.setImage(UIImage(named: "deselected"), for: .normal)
         $0.isSelected = false
     }
     
@@ -114,7 +116,7 @@ class SignupViewController2: UIViewController {
     
     let skin5Btn = UIButton().then{
         $0.setImage(UIImage(named: "selected"), for: .selected)
-        $0.setImage(UIImage(named: "unselected"), for: .normal)
+        $0.setImage(UIImage(named: "deselected"), for: .normal)
         $0.isSelected = false
     }
     let skin5Label = UILabel().then{
@@ -133,7 +135,16 @@ class SignupViewController2: UIViewController {
         $0.textColor = .lightGray
         $0.text = "피부 고민을 최대 5개까지 선택해주세요"
     }
-
+    
+    let skinWorriesCollectionView = UICollectionView(frame: .init(), collectionViewLayout: UICollectionViewLayout()).then{
+        $0.allowsSelection = false
+        $0.backgroundColor = .bgColor
+        $0.showsVerticalScrollIndicator = false
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.isScrollEnabled = false
+        $0.register(TagCell.self, forCellWithReuseIdentifier: TagCell.cellIdentifier)
+    }
+    
     
     let signUpBtn = UIButton().then{
         $0.setTitle("완료", for: .normal)
@@ -143,7 +154,7 @@ class SignupViewController2: UIViewController {
         $0.titleLabel?.textAlignment = .center
         $0.layer.cornerRadius = 8
     }
-
+    
     //MARK: - LifeCycles
     
     override func viewDidLoad() {
@@ -159,6 +170,13 @@ class SignupViewController2: UIViewController {
             self?.navigationController?.popViewController(animated: true)
         }
         
+        let layout = LeftAlignedCollectionViewFlowLayout()
+        layout.minimumLineSpacing = 12
+        layout.minimumInteritemSpacing = 8
+        self.skinWorriesCollectionView.collectionViewLayout = layout
+        self.skinWorriesCollectionView.delegate = self
+        self.skinWorriesCollectionView.dataSource = self
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -169,18 +187,18 @@ class SignupViewController2: UIViewController {
     }
     
     @objc func signUpBtnDidTab() {
-//
-//        ApiClient().signUp(self,SignUpInput(name: name.text,email: email.text , password: password.text))
+        //
+        //        ApiClient().signUp(self,SignUpInput(name: name.text,email: email.text , password: password.text))
         
     }
     
     @objc func passwordCheckTextFieldDidChange() {
         
-//        if password.text != passwordCheck.text {
-//            notice.isHidden = false
-//        }else{
-//            notice.isHidden = true
-//        }
+        //        if password.text != passwordCheck.text {
+        //            notice.isHidden = false
+        //        }else{
+        //            notice.isHidden = true
+        //        }
         updateLoginButtonState()
         
     }
@@ -192,12 +210,12 @@ class SignupViewController2: UIViewController {
     
     // 완료 버튼의 활성화 상태를 업데이트하는 메서드
     private func updateLoginButtonState() {
-//        let isNameEmpty = name.text?.isEmpty ?? true
-//        let isEmailEmpty = id.text?.isEmpty ?? true
-//        let isPasswordEmpty = password.text?.isEmpty ?? true
-//        let isPasswordCheckEmpty = passwordCheck.text?.isEmpty ?? true
-//        
-//        signUpBtn.isEnabled = !isNameEmpty && !isEmailEmpty && !isPasswordEmpty && !isPasswordCheckEmpty
+        //        let isNameEmpty = name.text?.isEmpty ?? true
+        //        let isEmailEmpty = id.text?.isEmpty ?? true
+        //        let isPasswordEmpty = password.text?.isEmpty ?? true
+        //        let isPasswordCheckEmpty = passwordCheck.text?.isEmpty ?? true
+        //
+        //        signUpBtn.isEnabled = !isNameEmpty && !isEmailEmpty && !isPasswordEmpty && !isPasswordCheckEmpty
         
         if signUpBtn.isEnabled {
             signUpBtn.backgroundColor = .buttonBgColor
@@ -228,14 +246,15 @@ class SignupViewController2: UIViewController {
         self.view.addSubview(skin5Label)
         self.view.addSubview(skinWorries)
         self.view.addSubview(skinWorriesDescription)
+        self.view.addSubview(skinWorriesCollectionView)
         self.view.addSubview(signUpBtn)
     }
     
     func layout(){
         navigationBar.snp.makeConstraints{ make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-                make.left.right.equalToSuperview()
-                make.height.equalTo(42)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(42)
         }
         genderLabel.snp.makeConstraints{ make in
             make.top.equalTo(navigationBar.snp.bottom).offset(25)
@@ -254,7 +273,7 @@ class SignupViewController2: UIViewController {
             make.size.equalTo(16)
         }
         femaleLabel.snp.makeConstraints{ make in
-            make.top.equalTo(femaleBtn.snp.top)
+            make.centerY.equalTo(femaleBtn)
             make.leading.equalTo(femaleBtn.snp.trailing).offset(8)
             make.height.equalTo(21)
         }
@@ -264,7 +283,7 @@ class SignupViewController2: UIViewController {
             make.size.equalTo(16)
         }
         maleLabel.snp.makeConstraints{ make in
-            make.top.equalTo(maleBtn.snp.top)
+            make.centerY.equalTo(maleBtn)
             make.leading.equalTo(maleBtn.snp.trailing).offset(8)
             make.height.equalTo(21)
         }
@@ -284,7 +303,7 @@ class SignupViewController2: UIViewController {
             make.size.equalTo(16)
         }
         skin1Label.snp.makeConstraints{ make in
-            make.top.equalTo(skin1Btn.snp.top)
+            make.centerY.equalTo(skin1Btn)
             make.leading.equalTo(skin1Btn.snp.trailing).offset(8)
             make.height.equalTo(21)
         }
@@ -294,7 +313,7 @@ class SignupViewController2: UIViewController {
             make.size.equalTo(16)
         }
         skin2Label.snp.makeConstraints{ make in
-            make.top.equalTo(skin2Btn.snp.top)
+            make.centerY.equalTo(skin2Btn)
             make.leading.equalTo(skin1Btn.snp.trailing).offset(8)
             make.height.equalTo(21)
         }
@@ -304,7 +323,7 @@ class SignupViewController2: UIViewController {
             make.size.equalTo(16)
         }
         skin3Label.snp.makeConstraints{ make in
-            make.top.equalTo(skin3Btn.snp.top)
+            make.centerY.equalTo(skin3Btn)
             make.leading.equalTo(skin3Btn.snp.trailing).offset(8)
             make.height.equalTo(21)
         }
@@ -314,7 +333,7 @@ class SignupViewController2: UIViewController {
             make.size.equalTo(16)
         }
         skin4Label.snp.makeConstraints{ make in
-            make.top.equalTo(skin4Btn.snp.top)
+            make.centerY.equalTo(skin4Btn)
             make.leading.equalTo(skin1Btn.snp.trailing).offset(8)
             make.height.equalTo(21)
         }
@@ -324,9 +343,27 @@ class SignupViewController2: UIViewController {
             make.size.equalTo(16)
         }
         skin5Label.snp.makeConstraints{ make in
-            make.top.equalTo(skin5Btn.snp.top)
+            make.centerY.equalTo(skin5Btn)
             make.leading.equalTo(skin5Btn.snp.trailing).offset(8)
             make.height.equalTo(21)
+        }
+        
+        skinWorries.snp.makeConstraints{ make in
+            make.top.equalTo(skin5Btn.snp.bottom).offset(30)
+            make.leading.equalToSuperview().offset(24)
+            make.height.equalTo(24)
+        }
+        skinWorriesDescription.snp.makeConstraints{ make in
+            make.top.equalTo(skinWorries.snp.bottom).offset(8)
+            make.leading.equalToSuperview().offset(24)
+            make.height.equalTo(20)
+        }
+        
+        skinWorriesCollectionView.snp.makeConstraints{ make in
+            make.top.equalTo(skinWorriesDescription.snp.bottom).offset(16)
+            make.leading.equalToSuperview().offset(24)
+            make.trailing.equalToSuperview().offset(-24)
+            make.height.equalTo(110)
         }
         
         signUpBtn.snp.makeConstraints{ make in
@@ -335,8 +372,44 @@ class SignupViewController2: UIViewController {
             make.trailing.equalToSuperview().offset(-20)
             make.height.equalTo(48)
         }
-
+        
     }
 }
 
-//MARK: - Keyboard
+//MARK: - CollectionViewDelegate
+extension SignupViewController2: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return tagList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCell.cellIdentifier, for: indexPath) as? TagCell else{
+            fatalError()
+        }
+        cell.tagLabel.layer.borderColor = UIColor.textDarkBrown.cgColor
+        cell.tagLabel.text = tagList[indexPath.row]
+        cell.tagLabel.textColor = .textDarkBrown
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCell.cellIdentifier, for: indexPath) as? TagCell else{
+            fatalError()
+        }
+        
+        cell.tagLabel.text = tagList[indexPath.row]
+        
+        cell.tagLabel.sizeToFit()
+        
+        let cellWidth = cell.tagLabel.frame.width + 24
+        
+        let size = CGSize(width: cellWidth, height: 28)
+        
+        return size
+    }
+}
