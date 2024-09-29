@@ -71,6 +71,14 @@ class NavigationBar: UIView {
         leftButtonAction = action
     }
     
+    func setLeftButton(_ isUsed: Bool) {
+        if !isUsed {
+            leftButton.isHidden = true
+        }else {
+            leftButton.isHidden = false
+        }
+    }
+    
     // MARK: - Private Methods
     
     private var leftButtonAction: (() -> Void)?

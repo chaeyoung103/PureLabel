@@ -23,3 +23,13 @@ struct SignupInput : Codable {
     var skinType : String?
     var skinWorries : [String]?
 }
+
+struct GetRankingModel : Codable {
+    var pk : Int?
+    var name : String?
+    var imageUrl: String?
+    var grade : String?
+    var skinType : String?
+    var skinWorries : [String]?
+    var rating : Float?
+}

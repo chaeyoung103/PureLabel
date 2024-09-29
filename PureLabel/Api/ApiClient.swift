@@ -16,7 +16,7 @@ struct APIResponse<T: Codable>: Codable {
 
 class ApiClient {
     func login(_ viewController : LoginViewController, _ parameter: LoginInput){
-        AF.request("http://172.20.10.3:9000/user/login", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, headers: nil).validate().responseDecodable(of: APIResponse<LoginModel>.self) { response in
+        AF.request("http://110.15.249.84:9000/user/login", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, headers: nil).validate().responseDecodable(of: APIResponse<LoginModel>.self) { response in
             print("로그인 ",response)
             switch response.result {
             case .success(let result):
@@ -42,7 +42,7 @@ class ApiClient {
     }
     
     func signup(_ viewController : SignupViewController2, _ parameter: SignupInput){
-        AF.request("http://172.20.10.3:9000/user/signUp", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, headers: nil).validate().responseDecodable(of: APIResponse<String>.self) { response in
+        AF.request("http://110.15.249.84:9000/user/signUp", method: .post, parameters: parameter, encoder: JSONParameterEncoder.default, headers: nil).validate().responseDecodable(of: APIResponse<String>.self) { response in
             switch response.result {
             case .success(let result):
                 print("응답 데이터: ", result)
@@ -55,6 +55,42 @@ class ApiClient {
                 
             case .failure(let error):
                 print("네트워크 오류: ", error.localizedDescription)
+            }
+        }
+    }
+    
+    func getRanking(count: Int,sort: String,completion: @escaping ([GetRankingModel]) -> Void){
+        AF.request("http://110.15.249.84:9000/cosmetic/list?sort=\(sort)&page=0&size=\(count)", method: .get, parameters: nil).validate().responseDecodable(of: APIResponse<[GetRankingModel]>.self) { response in
+            switch response.result {
+            case .success(let result):
+                print("응답 데이터: ", result)
+                if result.code == 1000 {
+                    print("리뷰랭킹반환api성공")
+                    completion(result.result!)
+                } else {
+                    print("회원가입 실패: ", result.message)
+                }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getSearch(search: String,completion: @escaping ([GetRankingModel]) -> Void){
+        AF.request("http://110.15.249.84:9000/cosmetic/list?search=\(search)", method: .get, parameters: nil).validate().responseDecodable(of: APIResponse<[GetRankingModel]>.self) { response in
+            switch response.result {
+            case .success(let result):
+                print("응답 데이터: ", result)
+                if result.code == 1000 {
+                    print("검색결과반환api성공")
+                    completion(result.result!)
+                } else {
+                    print("검색결과반환api 실패: ", result.message)
+                }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }

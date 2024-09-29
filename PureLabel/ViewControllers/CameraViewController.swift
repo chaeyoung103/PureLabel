@@ -77,8 +77,10 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
     
     @objc func backButtonDidTab() {
-        let homeVC = TabBarController()
-        self.navigationController?.pushViewController(homeVC, animated: true)
+        if let tabBarController = self.tabBarController {
+            tabBarController.selectedIndex = 0 // 원하는 탭 인덱스 설정 (예: 두 번째 탭)
+            tabBarController.tabBar.isHidden = false
+        }
     }
     
     @objc func turnButtonDidTab() {
@@ -171,6 +173,8 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         
         // Handle the captured image (e.g., save to gallery, display preview, etc.)
         print("사진이 성공적으로 찍혔습니다!")
+                let analysisVC = ResultViewController()
+                self.navigationController?.pushViewController(analysisVC, animated: true)
     }
     
     override func viewDidLayoutSubviews() {

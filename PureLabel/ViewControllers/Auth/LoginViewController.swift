@@ -9,7 +9,7 @@ import UIKit
 import Then
 import SnapKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController {
     
     //MARK: - UIComponents
     
@@ -134,6 +134,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @objc func loginBtnDidTab() {
         
         ApiClient().login(self,LoginInput(id: id.text,password: password.text))
+//        let homeVC = TabBarController()
+//        self.navigationController?.pushViewController(homeVC, animated: true)
     }
     
     @objc func signUpBtnDidTab() {
@@ -196,5 +198,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             make.height.equalTo(24)
         }
 
+    }
+}
+
+//MARK: - Keyboard
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == id {
+            password.becomeFirstResponder()
+        }
+        else if textField == password{
+            password.resignFirstResponder()
+        }
+        return true
     }
 }
