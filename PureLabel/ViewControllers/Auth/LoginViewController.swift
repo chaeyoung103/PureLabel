@@ -133,9 +133,9 @@ class LoginViewController: UIViewController {
     
     @objc func loginBtnDidTab() {
         
-        ApiClient().login(self,LoginInput(id: id.text,password: password.text))
-//        let homeVC = TabBarController()
-//        self.navigationController?.pushViewController(homeVC, animated: true)
+//        ApiClient().login(self,LoginInput(id: id.text,password: password.text))
+        let homeVC = TabBarController()
+        self.navigationController?.pushViewController(homeVC, animated: true)
     }
     
     @objc func signUpBtnDidTab() {
