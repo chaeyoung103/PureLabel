@@ -60,8 +60,8 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
     
     let homeBtn = UIButton().then{
         $0.setTitle("홈으로 돌아가기", for: .normal)
-        $0.backgroundColor = .buttonBgColor
-        $0.setTitleColor(.white, for: .normal)
+        $0.backgroundColor = .buttonBgColor_inactive
+        $0.setTitleColor(.buttonBgColor, for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         $0.titleLabel?.textAlignment = .center
         $0.layer.cornerRadius = 8
