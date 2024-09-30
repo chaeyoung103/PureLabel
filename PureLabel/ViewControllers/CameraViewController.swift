@@ -9,6 +9,8 @@ import UIKit
 import AVFoundation
 import SnapKit
 import Then
+import VisionKit
+import Vision
 
 class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     
@@ -51,6 +53,12 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         $0.layer.cornerRadius = 35
         $0.layer.borderColor = UIColor.textButtonColor.cgColor
         $0.layer.borderWidth = 3
+    }
+    
+    let resultImage = UIImageView().then {
+        $0.image = UIImage(named: "default")
+        $0.backgroundColor = .imgBgColor
+        $0.contentMode = .scaleAspectFit
     }
     
     override func viewDidLoad() {
@@ -173,8 +181,16 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
         
         // Handle the captured image (e.g., save to gallery, display preview, etc.)
         print("사진이 성공적으로 찍혔습니다!")
-                let analysisVC = ResultViewController()
-                self.navigationController?.pushViewController(analysisVC, animated: true)
+        resultImage.image = capturedImage
+        recognizeText(image:capturedImage)
+        self.view.addSubview(resultImage)
+        resultImage.snp.makeConstraints{ make in
+            make.top.equalTo(navigationBar.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-180)
+        }
+//        let analysisVC = ResultViewController()
+//        self.navigationController?.pushViewController(analysisVC, animated: true)
     }
     
     override func viewDidLayoutSubviews() {
@@ -239,6 +255,85 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
             make.centerY.equalTo(cameraControlBar)
             make.centerX.equalToSuperview()
             make.size.equalTo(70)
+        }
+    }
+    
+    fileprivate func recognizeText(image: UIImage?){
+        guard let cgImage = image?.cgImage else {
+            fatalError("could not get image")
+        }
+        
+        let handler = VNImageRequestHandler(cgImage: cgImage, options: [:])
+        let request = VNRecognizeTextRequest{ [weak self]request, error in
+            
+            guard let observations = request.results as? [VNRecognizedTextObservation],
+                  error == nil else{
+                return
+            }
+            
+            let text = observations.compactMap({
+                $0.topCandidates(1).first?.string
+            }).joined(separator: "\n")
+            DispatchQueue.main.async {
+//                self?.label.text = text
+                self?.drawRectanglesOnObservations(observations: observations)
+                print(text)
+            }
+        }
+        
+        let revision3 = VNRecognizeTextRequestRevision3
+        request.revision = revision3
+        request.recognitionLevel = .accurate
+        request.recognitionLanguages =  ["ko-KR"]
+        request.usesLanguageCorrection = true
+        
+        do {
+            var possibleLanguages: Array<String> = []
+            possibleLanguages = try request.supportedRecognitionLanguages()
+            print(possibleLanguages)
+        } catch {
+            print("Error getting the supported languages.")
+        }
+        do{
+            try handler.perform([request])
+        } catch {
+//            label.text = "\(error)"
+            print(error)
+        }
+    }
+    
+    func drawRectanglesOnObservations(observations : [VNDetectedObjectObservation]){
+        DispatchQueue.main.async {
+            guard let image = self.resultImage.image
+            else{
+                print("Failure in retrieving image")
+                return
+            }
+            let imageSize = image.size
+            var imageTransform = CGAffineTransform.identity.scaledBy(x: 1, y: -1).translatedBy(x: 0, y: -imageSize.height)
+            imageTransform = imageTransform.scaledBy(x: imageSize.width, y: imageSize.height)
+            UIGraphicsBeginImageContextWithOptions(imageSize, true, 0)
+            let graphicsContext = UIGraphicsGetCurrentContext()
+            image.draw(in: CGRect(origin: .zero, size: imageSize))
+            
+            graphicsContext?.saveGState()
+            graphicsContext?.setLineJoin(.round)
+            graphicsContext?.setLineWidth(8.0)
+            
+            graphicsContext?.setFillColor(red: 0, green: 1, blue: 0, alpha: 0.3)
+            graphicsContext?.setStrokeColor(UIColor.green.cgColor)
+            
+            observations.forEach { (observation) in
+                let observationBounds = observation.boundingBox.applying(imageTransform)
+                graphicsContext?.addRect(observationBounds)
+            }
+            
+            graphicsContext?.drawPath(using: CGPathDrawingMode.fillStroke)
+            graphicsContext?.restoreGState()
+            
+            let drawnImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            self.resultImage.image = drawnImage
         }
     }
 }
