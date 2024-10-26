@@ -11,8 +11,16 @@ struct LoginInput : Codable {
 }
 
 struct LoginModel : Codable {
+    var name : String?
+    var id : String?
+    var gender : Int?
+    var skinType : Int?
+}
+
+struct UserModel : Codable {
     var accessToken : String?
     var refreshToken : String?
+    var skinWorries : [String]?
 }
 
 struct SignupInput : Codable {
@@ -31,5 +39,16 @@ struct GetRankingModel : Codable {
     var grade : String?
     var skinType : String?
     var skinWorries : [String]?
+    var rating : Float?
+}
+
+struct GetCosmeticDetailModel : Codable {
+    var name : String?
+    var brand : String?
+    var price : Int?
+    var imageUrl: String?
+    var grade : String?
+    var consmeticTypes : [String]?
+    var ingredients : [String]?
     var rating : Float?
 }
