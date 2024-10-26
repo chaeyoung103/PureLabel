@@ -58,6 +58,7 @@ class RankingComponentView: UIView {
         super.init(frame: frame)
         self.layer.cornerRadius = 10
         self.backgroundColor = .white
+        self.isUserInteractionEnabled = true
         setupViews()
         setupConstraints()
     }
