@@ -40,6 +40,7 @@ extension UIColor {
     static let lightDarkBrown = UIColor(hex: "#636366")
     static let imgBgColor = UIColor(hex: "#F1EDED")
     static let profileBgColor = UIColor(hex: "#929292")
+    static let subBgColor = UIColor(hex: "#F1EDED")
     
     
     //무드보드 선택 컬러
