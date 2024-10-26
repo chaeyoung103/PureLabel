@@ -17,7 +17,7 @@ class SignupViewController2: UIViewController {
     var selectedSkinType = ""
     var selectedWorries: [String] = []
     
-    let tagList = ["여드름","아토피","피지/블랙헤드","민감성","속건조","주름/탄력","모공","홍조","각질","다크서클","미백/잡티","해당없음"]
+    let tagList = ["여드름","아토피","피지","민감성","속건조","주름","탄력","모공","홍조","각질","다크서클","미백","잡티","해당없음"]
     //MARK: - UIComponents
     
     let navigationBar = NavigationBar()

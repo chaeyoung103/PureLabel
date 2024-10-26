@@ -107,7 +107,7 @@ class SignupViewController: UIViewController {
     let passwordErrMessage = UILabel().then{
         $0.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         $0.textColor = .errRed
-        $0.text = "영문, 한글이 각 1개이상 포함되어야합니다 "
+        $0.text = "영문, 숫자가 각 1개이상 포함되어야합니다 "
         $0.isHidden = true
     }
     
