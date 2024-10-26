@@ -24,6 +24,8 @@
 		AC1A83F22CA7DDF400D6710D /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A83F12CA7DDF400D6710D /* CameraViewController.swift */; };
 		AC1A83F42CA7DE0A00D6710D /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A83F32CA7DE0A00D6710D /* CommunityViewController.swift */; };
 		AC1A83F62CA7DE1600D6710D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A83F52CA7DE1600D6710D /* ProfileViewController.swift */; };
+		AC4D2AA02CC935A7005110FD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4D2A9F2CC935A7005110FD /* DetailViewController.swift */; };
+		AC4D2AA22CCD387C005110FD /* ReviewComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4D2AA12CCD387C005110FD /* ReviewComponentView.swift */; };
 		ACCFC3462CA907760001B77F /* GoodReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCFC3452CA907760001B77F /* GoodReviewView.swift */; };
 		ACCFC3482CA907AB0001B77F /* GoodIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCFC3472CA907AB0001B77F /* GoodIngredientView.swift */; };
 		ACCFC34A2CA9B9AD0001B77F /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCFC3492CA9B9AD0001B77F /* RankingViewController.swift */; };
@@ -79,6 +81,8 @@
 		AC1A83F12CA7DDF400D6710D /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		AC1A83F32CA7DE0A00D6710D /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		AC1A83F52CA7DE1600D6710D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		AC4D2A9F2CC935A7005110FD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AC4D2AA12CCD387C005110FD /* ReviewComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewComponentView.swift; sourceTree = "<group>"; };
 		ACCFC3452CA907760001B77F /* GoodReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodReviewView.swift; sourceTree = "<group>"; };
 		ACCFC3472CA907AB0001B77F /* GoodIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodIngredientView.swift; sourceTree = "<group>"; };
 		ACCFC3492CA9B9AD0001B77F /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +212,7 @@
 				AC1A83F52CA7DE1600D6710D /* ProfileViewController.swift */,
 				ACCFC3492CA9B9AD0001B77F /* RankingViewController.swift */,
 				ACE55D0C2CA9E0A1006843D1 /* ResultViewController.swift */,
+				AC4D2A9F2CC935A7005110FD /* DetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 				ACCFC3472CA907AB0001B77F /* GoodIngredientView.swift */,
 				ACCFC34B2CA9BB9C0001B77F /* RankingComponentView.swift */,
 				ACE55D0E2CA9E855006843D1 /* IngredientView.swift */,
+				AC4D2AA12CCD387C005110FD /* ReviewComponentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -521,6 +527,7 @@
 			files = (
 				AC1A83D92CA6EC7B00D6710D /* SignupViewController.swift in Sources */,
 				AC1A83D42CA3D3CA00D6710D /* LoginViewController.swift in Sources */,
+				AC4D2AA02CC935A7005110FD /* DetailViewController.swift in Sources */,
 				ACE55D0D2CA9E0A1006843D1 /* ResultViewController.swift in Sources */,
 				ACCFC34A2CA9B9AD0001B77F /* RankingViewController.swift in Sources */,
 				AC1A83E92CA7D31D00D6710D /* TagCell.swift in Sources */,
@@ -530,6 +537,7 @@
 				ACCFC3482CA907AB0001B77F /* GoodIngredientView.swift in Sources */,
 				ACCFC3462CA907760001B77F /* GoodReviewView.swift in Sources */,
 				ACCFC34C2CA9BB9C0001B77F /* RankingComponentView.swift in Sources */,
+				AC4D2AA22CCD387C005110FD /* ReviewComponentView.swift in Sources */,
 				AC1A83F62CA7DE1600D6710D /* ProfileViewController.swift in Sources */,
 				ACE77F772C414DFD001B5A0F /* AppDelegate.swift in Sources */,
 				AC1A83DB2CA6F45500D6710D /* NavigationBar.swift in Sources */,
