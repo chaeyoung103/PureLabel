@@ -67,6 +67,9 @@ class ProfileViewController: UIViewController {
         $0.backgroundColor = .textButtonColor
     }
     
+    
+    let isSeletedReview = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .bgColor
@@ -76,6 +79,36 @@ class ProfileViewController: UIViewController {
         
         navigationBar.setTitle("프로필")
         navigationBar.setLeftButton(false)
+        
+        self.reviewLabel.addTarget(self, action: #selector(reviewBtnDidTab), for: .touchUpInside)
+        self.postLabel.addTarget(self, action: #selector(postBtnDidTab), for: .touchUpInside)
+    }
+    
+    @objc func reviewBtnDidTab() {
+        emptyLabel.setTitle("작성된 리뷰가 없어요!", for: .normal)
+        UIView.animate(withDuration: 0.3) {
+            self.selectdLine.snp.remakeConstraints { make in
+                make.centerX.equalTo(self.reviewLabel)
+                make.bottom.equalTo(self.line.snp.bottom)
+                make.width.equalTo(32)
+                make.height.equalTo(4)
+            }
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func postBtnDidTab() {
+        emptyLabel.setTitle("작성된 게시물이 없어요!", for: .normal)
+        UIView.animate(withDuration: 0.3) {
+        
+            self.selectdLine.snp.remakeConstraints { make in
+                make.centerX.equalTo(self.postLabel)
+                make.bottom.equalTo(self.line.snp.bottom)
+                make.width.equalTo(32)
+                make.height.equalTo(4)
+            }
+            self.view.layoutIfNeeded()
+        }
     }
     
     func hierarchy(){
@@ -141,17 +174,19 @@ class ProfileViewController: UIViewController {
             make.width.equalTo(154)
             make.height.equalTo(44)
         }
-        selectdLine.snp.makeConstraints{ make in
-            make.centerX.equalTo(postLabel)
-            make.bottom.equalTo(line.snp.bottom)
-            make.width.equalTo(32)
-            make.height.equalTo(4)
-        }
+        
         reviewLabel.snp.makeConstraints{ make in
             make.bottom.equalTo(line.snp.bottom)
             make.trailing.equalToSuperview().offset(-28)
             make.width.equalTo(154)
             make.height.equalTo(44)
+        }
+        
+        selectdLine.snp.makeConstraints{ make in
+            make.centerX.equalTo(postLabel)
+            make.bottom.equalTo(line.snp.bottom)
+            make.width.equalTo(32)
+            make.height.equalTo(4)
         }
         
         emptyLabel.snp.makeConstraints{ make in

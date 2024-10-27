@@ -69,7 +69,7 @@ class ApiClient {
                     print("리뷰상세반환api성공")
                     completion(result.result!)
                 } else {
-                    print("리뷰상세반환api 실패: ", result.message)
+                    print("리뷰상세반환api실패: ", result.message)
                 }
                 
             case .failure(let error):
@@ -107,7 +107,7 @@ class ApiClient {
                     print("검색결과반환api성공")
                     completion(result.result!)
                 } else {
-                    print("검색결과반환api 실패: ", result.message)
+                    print("검색결과반환api실패: ", result.message)
                 }
                 
             case .failure(let error):
@@ -125,7 +125,7 @@ class ApiClient {
                     print("리뷰상세반환api성공")
                     completion(result.result!)
                 } else {
-                    print("리뷰상세반환api 실패: ", result.message)
+                    print("리뷰상세반환api실패: ", result.message)
                 }
                 
             case .failure(let error):

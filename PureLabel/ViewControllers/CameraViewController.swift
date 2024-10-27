@@ -20,12 +20,14 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate, UII
     var photoOutput: AVCapturePhotoOutput!
     var currentCameraPosition: AVCaptureDevice.Position = .back
     
+    var isMobileAnalysis = true
+    
     let navigationBar = UIView().then{
         $0.backgroundColor = .buttonBgColor
     }
     
     let backButton = UIButton().then{
-        $0.setImage(UIImage(named: "backArrow"), for: .normal)
+        $0.setImage(UIImage(named: "sub.home"), for: .normal)
     }
     
     let menuButton = UIButton().then{
@@ -45,7 +47,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate, UII
     }
     
     let cameraView = UIView().then{
-        $0.backgroundColor = .white
+        $0.backgroundColor = .imgBgColor
     }
     
     let pictureButton = UIButton().then{
@@ -63,7 +65,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate, UII
     let resultImage = UIImageView().then {
         $0.image = UIImage(named: "default")
         $0.backgroundColor = .imgBgColor
-        $0.contentMode = .scaleAspectFit
+        $0.contentMode = .scaleAspectFill
     }
     
     override func viewDidLoad() {
@@ -82,12 +84,54 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate, UII
         self.turnButton.addTarget(self, action: #selector(turnButtonDidTab), for: .touchUpInside)
         self.galleryButton.addTarget(self, action: #selector(galleryButtonDidTab), for: .touchUpInside)
         self.sendButton.addTarget(self, action: #selector(sendButtonDidTab), for: .touchUpInside)
+        
+        showAnalysisOptionAlert()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+    
+    func showAnalysisOptionAlert() {
+        // UIAlertController 생성
+        let alertController = UIAlertController(title: "분석 방법 선택",
+                                                message: "모바일 분석과 서버 분석 중 선택해주세요.",
+                                                preferredStyle: .alert)
+        
+        // 모바일 분석 선택지
+        let mobileAnalysisAction = UIAlertAction(title: "모바일 분석", style: .default) { _ in
+            self.isMobileAnalysis = true
+        }
+        
+        // 서버 분석 선택지
+        let serverAnalysisAction = UIAlertAction(title: "서버 분석", style: .default) { _ in
+            // 서버 분석을 수행하는 코드
+            self.isMobileAnalysis = false
+        }
+        
+        // UIAlertController에 액션 추가
+        alertController.addAction(mobileAnalysisAction)
+        alertController.addAction(serverAnalysisAction)
+        
+        // 알림 표시
+        present(alertController, animated: true, completion: nil)
+    }
+
+    // 모바일 분석 수행 메서드
+    func performMobileAnalysis() {
+        // 모바일에서 분석 수행하는 코드
+        print("모바일 분석을 수행합니다.")
+        // 실제 모바일 분석 코드 추가
+    }
+
+    // 서버 분석 수행 메서드
+    func performServerAnalysis() {
+        // 서버로 요청 보내는 코드
+        print("서버 분석을 수행합니다.")
+        // 실제 서버 분석 코드 추가
+    }
+
     
     @objc func backButtonDidTab() {
         if let tabBarController = self.tabBarController {
@@ -185,7 +229,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate, UII
     func setupCamera() {
         // 1. Capture Session 초기화
         captureSession = AVCaptureSession()
-        captureSession.sessionPreset = .high
+        captureSession.sessionPreset = .photo
         
         // 2. 디바이스 선택 (기본 후면 카메라)
         guard let backCamera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
@@ -212,9 +256,9 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate, UII
         
         // 5. 출력 설정 (화면에 카메라 프리뷰 표시)
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        videoPreviewLayer.videoGravity = .resizeAspectFill
-        videoPreviewLayer.frame = view.frame
-        self.cameraView.layer.addSublayer(videoPreviewLayer)
+        videoPreviewLayer.videoGravity = .resizeAspectFill  // 비율을 유지하며 카메라뷰에 맞춤
+        videoPreviewLayer.frame = cameraView.bounds
+        cameraView.layer.addSublayer(videoPreviewLayer)
         
         // 6. 카메라 세션 시작
         DispatchQueue.global(qos: .userInitiated).async {
@@ -229,6 +273,7 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate, UII
         }
         // 사진 데이터를 UIImage로 변환
         let capturedImage = UIImage(data: imageData)
+        let fixedImage = fixedOrientationImage(capturedImage!)
         
         // Handle the captured image (e.g., save to gallery, display preview, etc.)
         print("사진이 성공적으로 찍혔습니다!")
@@ -236,8 +281,12 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate, UII
         galleryButton.isHidden = true
         turnButton.isHidden = true
         sendButton.isHidden = false
-        resultImage.image = capturedImage
-        recognizeText(image:capturedImage)
+        if (isMobileAnalysis){
+            resultImage.image = fixedImage
+            recognizeText(image:fixedImage)
+        }else {
+            //서버로 이미지 전달
+        }
         self.view.addSubview(resultImage)
         resultImage.snp.makeConstraints{ make in
             make.top.equalTo(navigationBar.snp.bottom)
@@ -247,8 +296,72 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate, UII
         
     }
     
+    func fixedOrientationImage(_ image: UIImage) -> UIImage {
+        guard let cgImage = image.cgImage else { return image }
+        
+        if image.imageOrientation == .up {
+            return image
+        }
+        
+        let width = image.size.width
+        let height = image.size.height
+        let colorSpace = cgImage.colorSpace
+        let bitmapInfo = cgImage.bitmapInfo
+        
+        guard let context = CGContext(
+            data: nil,
+            width: Int(width),
+            height: Int(height),
+            bitsPerComponent: cgImage.bitsPerComponent,
+            bytesPerRow: 0,
+            space: colorSpace!,
+            bitmapInfo: bitmapInfo.rawValue
+        ) else {
+            return image
+        }
+        
+        var transform: CGAffineTransform = .identity
+        
+        // Apply rotation based on image orientation and adjust scale to maintain aspect ratio
+        switch image.imageOrientation {
+        case .down, .downMirrored:
+            transform = transform
+                .translatedBy(x: width, y: height)
+                .rotated(by: .pi)
+        case .left, .leftMirrored:
+            transform = transform
+                .translatedBy(x: width, y: 0)
+                .rotated(by: .pi / 2)
+                .scaledBy(x: height / width, y: width / height)  // Scale to maintain aspect ratio
+        case .right, .rightMirrored:
+            transform = transform
+                .translatedBy(x: 0, y: height)
+                .rotated(by: -.pi / 2)
+                .scaledBy(x: height / width, y: width / height)  // Scale to maintain aspect ratio
+        case .up, .upMirrored:
+            break
+        @unknown default:
+            break
+        }
+        
+        context.concatenate(transform)
+        
+        switch image.imageOrientation {
+        case .leftMirrored, .rightMirrored:
+            context.draw(cgImage, in: CGRect(x: 0, y: 0, width: height, height: width))
+        default:
+            context.draw(cgImage, in: CGRect(x: 0, y: 0, width: width, height: height))
+        }
+        
+        guard let newCGImage = context.makeImage() else { return image }
+        return UIImage(cgImage: newCGImage)
+    }
+
+
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        videoPreviewLayer.frame = cameraView.bounds  // cameraView에 맞게 크기 조정
     }
     
     func hierarchy(){
@@ -263,60 +376,67 @@ class CameraViewController: UIViewController, AVCapturePhotoCaptureDelegate, UII
         self.view.addSubview(sendButton)
     }
     
-    func layout(){
-        navigationBar.snp.makeConstraints{ make in
+    func layout() {
+        // 네비게이션 바 설정
+        navigationBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(50)
         }
         
-        backButton.snp.makeConstraints{ make in
+        // 뒤로 가기 버튼 설정
+        backButton.snp.makeConstraints { make in
             make.centerY.equalTo(navigationBar)
-            make.leading.equalToSuperview().offset(12)
+            make.leading.equalToSuperview().offset(15)
             make.size.equalTo(24)
         }
         
-        menuButton.snp.makeConstraints{ make in
+        // 뒤로 가기 버튼 설정
+        menuButton.snp.makeConstraints { make in
             make.centerY.equalTo(navigationBar)
             make.trailing.equalToSuperview().offset(-10)
             make.size.equalTo(24)
         }
         
-        cameraView.snp.makeConstraints{ make in
+        // 카메라 프리뷰를 네비게이션 바와 바텀 바 사이에 위치
+        cameraView.snp.makeConstraints { make in
             make.top.equalTo(navigationBar.snp.bottom)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(cameraControlBar.snp.top)
         }
         
-        cameraControlBar.snp.makeConstraints{ make in
+        // 바텀 바 설정
+        cameraControlBar.snp.makeConstraints { make in
             make.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(180)
         }
         
-        galleryButton.snp.makeConstraints{ make in
+        // 각 버튼 설정
+        galleryButton.snp.makeConstraints { make in
             make.centerY.equalTo(cameraControlBar)
             make.trailing.equalTo(pictureButton.snp.leading).offset(-40)
             make.size.equalTo(30)
         }
         
-        turnButton.snp.makeConstraints{ make in
+        turnButton.snp.makeConstraints { make in
             make.centerY.equalTo(cameraControlBar)
             make.leading.equalTo(pictureButton.snp.trailing).offset(40)
             make.size.equalTo(30)
         }
         
-        pictureButton.snp.makeConstraints{ make in
+        pictureButton.snp.makeConstraints { make in
             make.centerY.equalTo(cameraControlBar)
             make.centerX.equalToSuperview()
             make.size.equalTo(70)
         }
         
-        sendButton.snp.makeConstraints{ make in
+        sendButton.snp.makeConstraints { make in
             make.center.equalTo(pictureButton)
             make.size.equalTo(40)
         }
     }
+
     
     fileprivate func recognizeText(image: UIImage?){
         guard let cgImage = image?.cgImage else {

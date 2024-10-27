@@ -10,17 +10,18 @@ struct LoginInput : Codable {
     var password : String?
 }
 
-struct LoginModel : Codable {
+struct UserModel : Codable {
     var name : String?
     var id : String?
     var gender : Int?
     var skinType : Int?
+    var skinWorries : [String]?
 }
 
-struct UserModel : Codable {
+struct LoginModel : Codable {
     var accessToken : String?
     var refreshToken : String?
-    var skinWorries : [String]?
+    var pk : Int?
 }
 
 struct SignupInput : Codable {
@@ -51,4 +52,18 @@ struct GetCosmeticDetailModel : Codable {
     var consmeticTypes : [String]?
     var ingredients : [String]?
     var rating : Float?
+}
+
+struct GetAnalyzeModel : Codable {
+    var analyzeResult : [AnalyzeModel]?
+}
+
+struct AnalyzeModel : Codable {
+    var pk : String?
+    var name : String?
+    var ewgGrade : EWGGrade?
+}
+
+struct EWGGrade : Codable {
+    var grade : Int?
 }

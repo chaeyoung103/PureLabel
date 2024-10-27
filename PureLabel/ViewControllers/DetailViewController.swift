@@ -121,6 +121,11 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .regular)
     }
     
+    let levelTag = UIImageView().then {
+        $0.image = UIImage(named: "goodTag")
+        $0.contentMode = .scaleAspectFit
+    }
+    
     let reviewComponent = ReviewComponentView()
     
     let cosmeticId : Int
@@ -165,6 +170,13 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
             self.brandLabel.text = result.brand
             self.nameLabel.text = result.name
             self.ingredient.text = result.ingredients?.joined(separator: "\n")
+            if result.grade == "좋음" {
+                self.levelTag.image = UIImage(named: "goodTag")
+            }else if result.grade == "보통"{
+                self.levelTag.image = UIImage(named: "normalTag")
+            }else if result.grade == "나쁨"{
+                    self.levelTag.image = UIImage(named: "badTag")
+                }
             if let price = result.price {
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
@@ -194,6 +206,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         self.contentView.addSubview(typeTitle)
         self.contentView.addSubview(reviewTitle)
         self.contentView.addSubview(ingredientTitle)
+        self.contentView.addSubview(levelTag)
         self.contentView.addSubview(price)
         self.contentView.addSubview(type)
         self.contentView.addSubview(star)
@@ -238,13 +251,13 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         }
         
         priceTitle.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(5)
+            make.top.equalTo(nameLabel.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(20)
             make.height.equalTo(21)
         }
         
         price.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(5)
+            make.top.equalTo(nameLabel.snp.bottom).offset(10)
             make.leading.equalTo(priceTitle.snp.trailing).offset(10)
             make.height.equalTo(21)
         }
@@ -267,6 +280,13 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
             make.height.equalTo(21)
         }
         
+        levelTag.snp.makeConstraints { make in
+            make.top.equalTo(ingredientTitle.snp.top)
+            make.trailing.equalToSuperview().offset(-20)
+            make.height.equalTo(21)
+            make.width.equalTo(36)
+        }
+        
         ingredient.snp.makeConstraints { make in
             make.top.equalTo(typeTitle.snp.bottom).offset(5)
             make.leading.equalTo(ingredientTitle.snp.trailing).offset(10)
@@ -274,19 +294,19 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         }
         
         reviewTitle.snp.makeConstraints { make in
-            make.top.equalTo(ingredient.snp.bottom).offset(5)
+            make.top.equalTo(ingredient.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(20)
             make.height.equalTo(21)
         }
         
         star.snp.makeConstraints { make in
-            make.top.equalTo(ingredient.snp.bottom).offset(5)
+            make.top.equalTo(ingredient.snp.bottom).offset(10)
             make.leading.equalTo(reviewTitle.snp.trailing).offset(10)
             make.height.equalTo(21)
         }
         
         review.snp.makeConstraints { make in
-            make.top.equalTo(ingredient.snp.bottom).offset(5)
+            make.top.equalTo(ingredient.snp.bottom).offset(10)
             make.leading.equalTo(star.snp.trailing).offset(5)
             make.height.equalTo(21)
         }
